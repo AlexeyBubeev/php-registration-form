@@ -1,5 +1,7 @@
 $(function(){
 
+/* nice input type[file] */
+
   var wrapper = $( ".file_upload" ),
   inp = wrapper.find( "input" ),
   btn = wrapper.find( "button" ),
@@ -8,7 +10,7 @@ $(function(){
   btn.focus(function(){
     inp.focus()
   });
-  // Crutches for the :focus style:
+
   inp.focus(function(){
     wrapper.addClass( "focus" );
   }).blur(function(){
@@ -33,6 +35,22 @@ $(function(){
     $( ".file_upload input" ).triggerHandler( "change" );
   });
 
+/*** nice input type[file] ***/
+
+  $('.tab a').on('click', function (e) {
+    e.preventDefault();
+    $(this).parent().addClass('active');
+    $(this).parent().siblings().removeClass('active');
+    target = $(this).attr('href');
+    $('.tab-content > div').not(target).hide();
+    $(target).fadeIn(600);
+  });
+
+/* form validation */
+
+change(function() {
+    //enter code here
+});
 
   $('#send').click(function(e){
     e.preventDefault();
@@ -78,6 +96,8 @@ $(function(){
         submitForm(formData);
     }
   });
+/*** form validation ***/
+
   function submitForm(formData) {
     $.post('reg2.php',formData, function(data){
       //console.log(data);
@@ -90,6 +110,8 @@ $(function(){
       }
     });
   };
+
+
 
 });
 

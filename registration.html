@@ -9,19 +9,27 @@
   </head>
   <body>
     <div class="container">
-      <h1>Регистрация</h1>
       <form id="form_reg" action="reg.php" method="post">
-        <label>Имя пользователя : <input placeholder="Вася Пупкин" type="text" name="name" id="name"> </label>
-        <label>Электронный почтовый адрес : <input placeholder="vasya.pupkin@email.com" type="text" name="email" id="email"> </label>
-        <label>Пароль : <input placeholder="qwerty123456" type="password" name="password" id="password"> </label>
-        <label>
+        <ul class="tab-group">
+          <li id="signup_tab" class="tab active"><a href="#signup">Регистрация</a></li>
+          <li id="login_tab" class="tab"><a href="#login">Войти</a></li>
+        </ul>
+        <label id="label_name">Имя пользователя : <input placeholder="Вася Пупкин" type="text" name="name" id="name"> <span class="error"></span> </label>
+        <label id="label_password">Пароль : <input placeholder="******" type="password" name="password" id="password"> <span class="error"></span> </label>
+        <label id="label_email">Электронный почтовый адрес : <input placeholder="vasya.pupkin@email.com" type="text" name="email" id="email"> <span class="error"></span> </label>
+        <label>Загрузить картинку :</label>
+        <label id="label_image">
+
           <div class="file_upload">
             <button type="button" class="submitbtn">Выбрать</button>
             <div>Файл не выбран</div>
             <input type="file">
           </div>
+          <span class="error"></span>
         </label>
-        <div class="nice-submit" ><button class="submitbtn">Зарегистрироваться</button></div>
+        <label>
+          <div class="nice-submit" ><button class="submitbtn">Зарегистрироваться</button></div>
+        </label>
       </form>
     </div>
   </body>
