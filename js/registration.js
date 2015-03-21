@@ -18,9 +18,19 @@ $(function(){
   });
   var file_api = ( window.File && window.FileReader && window.FileList && window.Blob ) ? true : false;
   inp.change(function(){
+    $("#label_image").children('span').empty();
+    lbl.text('Файл не выбран');
     var file_name;
-    if( file_api && inp[ 0 ].files[ 0 ] ) 
+    if( file_api && inp[ 0 ].files[ 0 ] ) { 
       file_name = inp[ 0 ].files[ 0 ].name;
+       // проверка файла
+      imagefile = inp[ 0 ].files[ 0 ].type; 
+      var match= ["image/jpeg","image/png","image/jpg","image/gif"];
+      if(!((imagefile==match[0]) || (imagefile==match[1]) || (imagefile==match[2]) || (imagefile==match[3]))) {
+        $('#label_image').children('span').text('Выбранный файл не является изображением');
+        return false;
+      }
+    }
     else
       file_name = inp.val().replace( "C:\\fakepath\\", '' );
     if( ! file_name.length ) return;
@@ -36,7 +46,7 @@ $(function(){
   });
 
 /*** nice input type[file] ***/
-
+/* form tabs */
   $('.tab a').on('click', function (e) {
     e.preventDefault();
     $(this).parent().addClass('active');
@@ -44,47 +54,49 @@ $(function(){
     target = $(this).attr('href');
     $('.tab-content > div').not(target).hide();
     $(target).fadeIn(600);
+    if ($('#login_tab').hasClass("active")){
+      $('.signup_label').hide();
+      $('#go_submit').text('Вход');
+    }
+    else{
+      $('.signup_label').show();
+      $('#go_submit').text('Зарегистрироваться');
+    }
   });
-
+/*** form tabs ***/
 /* form validation */
 
-change(function() {
-    //enter code here
+$('.v_input').change(function(){
+ $(this).parent().children('span').empty();
 });
 
-  $('#send').click(function(e){
+
+
+  $('#go_submit').click(function(e){
     e.preventDefault();
     var valid = '';
     var required =' is required.';
-    var login = $('#account_reg #login').val();
-    var password = $('#account_reg #password').val();
-    var rpassword = $('#account_reg #rpassword').val();
-    var email = $('#account_reg #email').val();
-    var honeypot = $('#account_reg #honeypot').val();
-    var humancheck = $('#account_reg #humancheck').val();
+    var password = $('#password_id').val();
+    var email = $('#email_id').val();
+    var honeypot = $('#file_id').val();
 
-    if(login = ''){
-        valid ='<p> Your Name '+ required +'</p>';
+    if($('#name_id').val().length == 0){
+        $('#label_name').children('span').text('Это поле должно быть заполнено.').fadeIn('fast');
+        return;
     }
-    if(password='' || company.length<=6){
-        valid +='<p> Password '+ required +'</p>';
+    if($('#password_id').val().length == 0){
+        $('#label_password').children('span').text('Это поле должно быть заполнено.').fadeIn('fast');
+        return;
     }
-    if(rpassword != password){
-        valid +='<p> password must match </p>';
+    if($('#password_id').val().length<=6){
+        $('#label_password').children('span').text('Слабый пароль. Пароль должен быть больше 6 символов.').fadeIn('fast');
+        return;
     }
     if(!email.match(/^([a-z0-9._-]+@[a-z0-9._-]+\.[a-z]{2,4}$)/i))
     {
-        valid +='<p> Your Email' + required +'</p>';
+        $('#label_email').children('span').text('Проверьте, правильно ли заполнено поле.').fadeIn('fast');
+        return;
     }
-
-    if (honeypot != 'http://') {
-        valid += '<p>Spambots are not allowed.</p>';    
-    }
-
-    if (humancheck != '') {
-        valid += '<p>A human user' + required + '</p>'; 
-    }
-
     if(valid !=''){
         $('#account_reg #response').removeClass().addClass("error")
         .html('<strong> Please Correct the errors Below </strong>' + valid).fadeIn('fast');

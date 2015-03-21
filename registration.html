@@ -14,22 +14,19 @@
           <li id="signup_tab" class="tab active"><a href="#signup">Регистрация</a></li>
           <li id="login_tab" class="tab"><a href="#login">Войти</a></li>
         </ul>
-        <label id="label_name">Имя пользователя : <input placeholder="Вася Пупкин" type="text" name="name" id="name"> <span class="error"></span> </label>
-        <label id="label_password">Пароль : <input placeholder="******" type="password" name="password" id="password"> <span class="error"></span> </label>
-        <label id="label_email">Электронный почтовый адрес : <input placeholder="vasya.pupkin@email.com" type="text" name="email" id="email"> <span class="error"></span> </label>
-        <label>Загрузить картинку :</label>
-        <label id="label_image">
-
+        <label id="label_name">Имя пользователя : <input placeholder="Вася Пупкин" type="text" name="name" id="name_id" class="v_input"> <span class="error"></span> </label>
+        <label id="label_password">Пароль : <input placeholder="******" type="password" name="password" id="password_id" class="v_input"> <span class="error"></span> </label>
+        <label id="label_email" class="signup_label">Электронный почтовый ящик : <input placeholder="vasya.pupkin@email.com" type="text" name="email" id="email_id" class="v_input"> <span class="error"></span> </label>
+        <label class="signup_label">Загрузить картинку :</label>
+        <label id="label_image" class="signup_label">
           <div class="file_upload">
             <button type="button" class="submitbtn">Выбрать</button>
             <div>Файл не выбран</div>
-            <input type="file">
+            <input type="file" id="file_id">
           </div>
           <span class="error"></span>
         </label>
-        <label>
-          <div class="nice-submit" ><button class="submitbtn">Зарегистрироваться</button></div>
-        </label>
+        <div class="nice-submit" ><button id="go_submit" class="submitbtn">Зарегистрироваться</button></div>
       </form>
     </div>
   </body>
