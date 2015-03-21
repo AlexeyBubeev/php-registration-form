@@ -88,20 +88,24 @@ $(function(){
       $('#label_password').children('span').text('Слабый пароль. Пароль должен быть больше 6 символов.').fadeIn('fast');
       return;
     }
-    if ($('#signup_tab').hasClass("active")){ // не проверяем поля формы регистрации для формы входа
+    if ($('#signup_tab').hasClass("active")){ // не проверяем поля регистрации для входа
       if(!$('#email_id').val().match(/^([a-z0-9._-]+@[a-z0-9._-]+\.[a-z]{2,4}$)/i)){
         $('#label_email').children('span').text('Проверьте, правильно ли заполнено поле.').fadeIn('fast');
         return;
       }
     }
-    var formData = $('#form_reg').serialize();
-    $('#main_status').text('Пожалуйста подождите,ваш запрос обрабатывается...').fadeIn('fast');
-    submitForm(formData);
+    //var formData = $('#form_reg').serialize();
+//  formDatfa = new FormData(this);
+//  $('#main_status').text('Пожалуйста подождите,ваш запрос обрабатывается...').fadeIn('fast');
+//  submitForm(formDatfa);
+    $('#form_reg').submit();
   });
-
+/*
   function submitForm(formData) {
-    $.post('reg2.php',formData, function(data){
+    $.post('registration.php',formData, function(data){
       //console.log(data);
+      $("#main_status").html(data);
+
       if (data === '1') {
         alert('ok!');
       }
@@ -111,7 +115,22 @@ $(function(){
     });
   };
 
-
+  function submitForm(formData) {
+    $.ajax({
+      url: "registration.php", // Url to which the request is send
+      type: "POST",             // Type of request to be send, called as method
+      data: formData, // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+      async: false,
+      contentType: false,       // The content type used when sending data to the server.
+      cache: false,             // To unable request pages to be cached
+      processData: false,        // To send DOMDocument or non processed data file it is set to false
+      success: function(data) {
+        //$('#main_status').fadeOut('fast');
+        $("#main_status").html(data);
+      }
+    });
+  };
+*/
 /*** form validation + submit ***/
 
 
