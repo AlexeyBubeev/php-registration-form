@@ -10,6 +10,7 @@
   <body>
     <div class="container">
       <form id="form_reg" action="reg.php" method="post">
+        <input type="hidden" name="type" id="type_id" value="1">
         <ul class="tab-group">
           <li id="signup_tab" class="tab active"><a href="#signup">Регистрация</a></li>
           <li id="login_tab" class="tab"><a href="#login">Войти</a></li>
@@ -27,6 +28,7 @@
           <span class="error"></span>
         </label>
         <div class="nice-submit" ><button id="go_submit" class="submitbtn">Зарегистрироваться</button></div>
+        <span id="main_status"></span>
       </form>
     </div>
   </body>
