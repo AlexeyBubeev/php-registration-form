@@ -261,5 +261,45 @@ button.submitbtn:active {
   width: 100%;
   text-align: center;
 }
-
-
+#main_list {
+  background: none repeat scroll 0 0 #fff;
+  border: 1px solid #e4e4e4;
+  border-radius: 5px;
+  display: inline-block;
+  font-size: 0;
+  margin: 24px;
+  max-width: 75%;
+  overflow: hidden;
+  width: 800px;
+}
+#main_list p{
+  color: #939393;
+  cursor: pointer;
+  display: block;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 20px 20px 10px;
+  text-align: left;
+  text-transform: uppercase;
+  vertical-align: top;
+}
+#main_list b{
+  color: #555555;
+  font-weight:bold;
+}
+#main_list div{
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  width: 33.3333%;
+  padding: 10px 20px;
+}
+#main_list img {
+  border:none;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+  display: block;
+  margin-right: 10px;
+  padding: 4px;
+}

@@ -1,5 +1,9 @@
 $(function(){
 
+/* nice img */
+
+/*** nice img ***/
+
 /* nice input type[file] */
 
   var wrapper = $( ".file_upload" ),
@@ -23,12 +27,18 @@ $(function(){
     var file_name;
     if( file_api && inp[ 0 ].files[ 0 ] ) { // проверка файла
       file_name = inp[ 0 ].files[ 0 ].name;
-      imagefile = inp[ 0 ].files[ 0 ].type; 
+      imagefile = inp[ 0 ].files[ 0 ].type;
+      file_size = inp[ 0 ].files[ 0 ].size;
       var match= ["image/jpeg","image/png","image/jpg","image/gif"];
       if(!((imagefile==match[0]) || (imagefile==match[1]) || (imagefile==match[2]) || (imagefile==match[3]))) {
         $('#label_image').children('span').text('Выбранный файл не является изображением');
         return false;
       }
+      if(file_size > 524288) {
+        $('#label_image').children('span').text('Размер файла не должен превышать 500Кб');
+        return false;
+      }
+
     }
     else
       file_name = inp.val().replace( "C:\\fakepath\\", '' );
