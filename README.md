@@ -1,4 +1,4 @@
-# digital360
+# php registration form
 Форма входа/регистрации нового пользователя средствами php, MySQL, JavaScript.
-<a href="http://digital360.stopbit.ru/">Demo</a>
+<a href="http://php.stopbit.ru/">Demo</a>
 
